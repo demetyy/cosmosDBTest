@@ -28,10 +28,10 @@ public class GraphDbIntegrationTests {
 	}
 	
 	@Test
-	private void simpleGraphTest_success() throws Exception {
+	public void simpleGraphTest_success() throws Exception {
 		Client client = graphService.connectGraph();
 		
-		String gremlinQuery = "";
+		String gremlinQuery = "g.addV('person').property('id', 'thomas').property('firstName', 'Thomas').property('age', 44)";
 		
 		// After connection is successful, run the query against the server.
         System.out.println("\nSubmitting this Gremlin query: " + gremlinQuery);
@@ -58,7 +58,7 @@ public class GraphDbIntegrationTests {
         for (Result result : resultList) {
             System.out.println("\nQuery result:");
             System.out.println(result.toString());
-            Assert.assertEquals("", result.toString());
+            Assert.assertNotNull(result);
         }
        
 	}
