@@ -24,12 +24,12 @@ public class GraphDbIntegrationTests {
 	
 	@Before
 	public void setUp() {
-		graphService.connectGraph().submit("g.V().drop()").all().join();
+		graphService.connectGraph(Constants.getGraphTestYamlPath()).submit("g.V().drop()").all().join();
 	}
 	
 	@Test
 	public void simpleGraphTest_success() throws Exception {
-		Client client = graphService.connectGraph();
+		Client client = graphService.connectGraph(Constants.getGraphTestYamlPath());
 		
 		String gremlinQuery = "g.addV('person').property('id', 'thomas').property('firstName', 'Thomas').property('age', 44)";
 		

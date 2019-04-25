@@ -14,10 +14,10 @@ public class GraphService {
 	private Cluster cluster;
     private Client client;
 
-	public Client connectGraph() {
+	public Client connectGraph(String filePath) {
         try {
             // Attempt to create the connection objects
-            cluster = Cluster.build(new File(Constants.getGraphYamlPath())).create();
+            cluster = Cluster.build(new File(filePath)).create();
             /* If we want to connect user pwd from params
              * .credentials(EnvironmentConstants.getCosmosDBUsername(), EnvironmentConstants.getCosmosDBPassword());
              * */
